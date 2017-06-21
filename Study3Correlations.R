@@ -1,14 +1,16 @@
 
 library("Hmisc")
 library("xtable")
+library("readr")
 
-MTF3 <- read_csv("http://github.com/jon-may/MTF-PA/raw/master/Exp3.csv")
+MTF3 <- read_csv("http://github.com/jon-may/MTF-PA/raw/master/MTF3.csv")
 
 
 dfcorr<-MTF3[,49:60]
 
 
-
+#following corstars function definition is taken from
+# http://www.sthda.com/english/wiki/elegant-correlation-table-using-xtable-r-package
 # x is a matrix containing the data
 # method : correlation method. "pearson"" or "spearman"" is supported
 # removeTriangle : remove upper or lower triangle
@@ -60,5 +62,5 @@ corstars <-function(x, method=c("pearson", "spearman"),
 } 
 
 
-corstars(dfcorr, method = "pearson", removeTriangle = "lower", result="html")
+corstars(dfcorr, method = "pearson", removeTriangle = "lower", result="none")
 

@@ -1,4 +1,4 @@
-
+library("readr")
 library("lavaan")
 library("semTools")
 MTFPA1 <- read_csv("http://github.com/jon-may/MTF-PA/raw/master/St1MTFnoout.csv")
