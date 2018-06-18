@@ -5,4 +5,4 @@ Study 1: The data file for Study 1 is MTFSMPA.csv. This contains five demographi
 
 Study 2: use script Analysis_S2.R and data file HUGOPA.csv
 
-Study 3: Use Study3correlations.R and data fiel Study3.csv
+Study 3: Use Study3correlations.R and data file MTF3.csv
