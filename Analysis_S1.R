@@ -6,12 +6,47 @@
 library(readr)
 library("lavaan")
 library("semTools")
+library(tidyverse)
 
 ## CFA anlayses are long so increase maximum number of lines to print
 options(max.print = 99999)
 
 ## read data file
 MTFPA1 <- read.csv("MTFSMPA.csv")
+
+# count participants by Sex
+as.factor(MTFPA1$Sex)
+MTFPA1$Sex<-recode_factor(MTFPA1$Sex, '1' = "Male",
+                          '2' = "Female")
+table(MTFPA1$Sex, MTFPA1$Site)
+chisq.test(table(MTFPA1$Sex, MTFPA1$Site))
+
+
+# compare ages by site
+t.test(MTFPA1$Age ~ MTFPA1$Site)
+
+# count participants by Relationship
+as.factor(MTFPA1$Relationship)
+MTFPA1$Relationship<-recode_factor(MTFPA1$Relationship, '1' = "single",
+                                '2' = "in relationship",
+                                '3' = "married/de facto",
+                                '4' = "separated",
+                                '5' = "divorced",
+                                '6' = "widowed")
+table(MTFPA1$Relationship, MTFPA1$Site)
+chisq.test(table(MTFPA1$Relationship, MTFPA1$Site))
+
+# count participants by Education
+as.factor(MTFPA1$Education)
+MTFPA1$Education<-recode_factor(MTFPA1$Education, '1' = "Secondary",
+                                '2' = "trade, diploma, certificate",
+                                '3' = "currently undergraduate",
+                                '4' = "completed undergraduate",
+                                '5' = "completed postgraduate")
+table(MTFPA1$Education, MTFPA1$Site)
+chisq.test(table(MTFPA1$Education, MTFPA1$Site))
+
+
 
 ## create output file for analysis to be sent to
 sink('MTFAnalysis.txt', split='TRUE')
